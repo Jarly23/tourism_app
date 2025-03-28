@@ -14,20 +14,12 @@ class CustomNavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Color colorAzul = const Color(0xFF0D6EFD);
     return Container(
-      color: const Color.fromARGB(
-        255,
-        31,
-        61,
-        233,
-      ), // Asegura que el contenedor tenga el fondo azul
+      color: colorAzul, // Asegura que el contenedor tenga el fondo azul
       child: BottomNavigationBar(
-        backgroundColor: const Color.fromARGB(
-          255,
-          31,
-          61,
-          233,
-        ), // Asegura que el fondo del BottomNavigationBar sea azul
+        backgroundColor:
+            colorAzul, // Asegura que el fondo del BottomNavigationBar sea azul
         elevation: 0,
         currentIndex: currentIndex,
         onTap: onTap,
@@ -39,17 +31,17 @@ class CustomNavBar extends StatelessWidget {
             BottomNavigationBarType
                 .fixed, // Evita efectos de transparencia en los ítems
         items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Inicio'),
           BottomNavigationBarItem(
             icon: Icon(Icons.location_on),
-            label: 'Destinations',
+            label: 'Destinos',
           ),
-          BottomNavigationBarItem(icon: Icon(Icons.hotel), label: 'Hotels'),
+          BottomNavigationBarItem(icon: Icon(Icons.hotel), label: 'Hoteles'),
           BottomNavigationBarItem(
             icon: Icon(Icons.card_travel),
-            label: 'Packages',
+            label: 'Paquetes',
           ),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Perfil'),
         ],
       ),
     );

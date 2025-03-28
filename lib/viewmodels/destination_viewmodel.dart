@@ -7,22 +7,22 @@ class DestinationViewModel extends ChangeNotifier {
       id: '1',
       name: 'Arequipa',
       image:
-          'https://content.r9cdn.net/rimg/dimg/9b/c5/d5c7611f-city-2270-16441b01e36.jpg?width=1366&height=768&xhint=1623&yhint=912&crop=true',
-      tourIds: ['101', '102', '103'],
-    ),
-    Destination(
-      id: '2',
-      name: 'Puno',
-      image:
-          'https://upload.wikimedia.org/wikipedia/commons/9/98/Cidade_Maravilhosa.jpg',
-      tourIds: ['103', '104'],
+          'https://media.vogue.mx/photos/5e5c5b1f25623100081c437c/master/w_1600%2Cc_limit/Arequipa--paisaje.jpg',
+      tourIds: ['100', '101', '102', '103', '105'],
     ),
     Destination(
       id: '3',
       name: 'Cusco',
       image:
-          'https://content.r9cdn.net/rimg/dimg/7d/34/bc7300b5-city-15324-16906f3d65a.jpg?width=1366&height=768&xhint=1420&yhint=706&crop=true',
-      tourIds: ['105', '106'],
+          'https://upload.wikimedia.org/wikipedia/commons/9/98/Cidade_Maravilhosa.jpg',
+      tourIds: ['106', '107', '108', '109', '110', '111', '112', '113'],
+    ),
+    Destination(
+      id: '2',
+      name: 'Puno',
+      image:
+          'https://denomades.imgix.net/destinos/puno/350/islas-flotantes-de-uros.jpg',
+      tourIds: ['114', '115', '116', '117', '118'],
     ),
   ];
 

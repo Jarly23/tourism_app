@@ -26,12 +26,12 @@ class LoginScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const Text(
-                  'Sign in now',
+                  'Inicia sesión',
                   style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 10),
                 const Text(
-                  'Please sign in to continue our app',
+                  'Por favor, inicia sesión para continuar \ncon nuestra aplicación.',
                   style: TextStyle(fontSize: 16, color: Colors.grey),
                 ),
                 const SizedBox(height: 30),
@@ -73,7 +73,7 @@ class LoginScreen extends StatelessWidget {
                   child: TextButton(
                     onPressed: () {},
                     child: const Text(
-                      'Forgot Password?',
+                      'Olvidaste tu contraseña?',
                       style: TextStyle(color: Colors.blue),
                     ),
                   ),
@@ -120,7 +120,7 @@ class LoginScreen extends StatelessWidget {
                               color: Colors.white,
                             )
                             : const Text(
-                              'Sign In',
+                              'Iniciar Sesión',
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 16,
@@ -132,7 +132,7 @@ class LoginScreen extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text("Don't have an account?"),
+                    const Text("No tienes una cuenta?"),
                     TextButton(
                       onPressed: () {
                         Navigator.push(
@@ -143,14 +143,17 @@ class LoginScreen extends StatelessWidget {
                         );
                       },
                       child: const Text(
-                        'Sign up',
+                        'Crear cuenta',
                         style: TextStyle(color: Colors.blue),
                       ),
                     ),
                   ],
                 ),
                 const SizedBox(height: 10),
-                const Text("Or connect", style: TextStyle(color: Colors.grey)),
+                const Text(
+                  "O inicia sesión con",
+                  style: TextStyle(color: Colors.grey),
+                ),
                 const SizedBox(height: 15),
                 GestureDetector(
                   onTap:

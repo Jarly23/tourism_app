@@ -9,12 +9,13 @@ class HotelScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final hotelViewModel = Provider.of<HotelViewModel>(context);
+    final screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
-        title: const Text('Favorite Places'),
+        title: const Text('Hoteles'),
       ),
       body:
           hotelViewModel.hotels.isEmpty
@@ -22,11 +23,15 @@ class HotelScreen extends StatelessWidget {
               : Padding(
                 padding: const EdgeInsets.all(12.0),
                 child: GridView.builder(
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2, // Dos columnas
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount:
+                        screenWidth < 600
+                            ? 2
+                            : 3, // Más columnas en pantallas grandes
                     crossAxisSpacing: 12,
                     mainAxisSpacing: 12,
-                    childAspectRatio: 0.8, // Ajuste de altura
+                    childAspectRatio:
+                        screenWidth < 400 ? 0.7 : 0.8, // Ajuste dinámico
                   ),
                   itemCount: hotelViewModel.hotels.length,
                   itemBuilder: (context, index) {
@@ -40,13 +45,14 @@ class HotelScreen extends StatelessWidget {
 }
 
 class HotelCard extends StatelessWidget {
-  // ignore: prefer_typing_uninitialized_variables
   final hotel;
 
   const HotelCard({super.key, required this.hotel});
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+
     return GestureDetector(
       onTap: () {
         Navigator.push(
@@ -57,16 +63,16 @@ class HotelCard extends StatelessWidget {
         );
       },
       child: Container(
-        padding: const EdgeInsets.all(12), // Padding del contenedor padre
+        padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(
-          color: Colors.white, // Fondo blanco
+          color: Colors.white,
           borderRadius: BorderRadius.circular(16),
           boxShadow: [
             BoxShadow(
               color: Colors.black.withOpacity(0.1),
               blurRadius: 6,
               spreadRadius: 1,
-              offset: const Offset(0, 4), // Sombra en la parte inferior
+              offset: const Offset(0, 4),
             ),
           ],
         ),
@@ -76,17 +82,21 @@ class HotelCard extends StatelessWidget {
             Stack(
               children: [
                 ClipRRect(
-                  borderRadius: BorderRadius.circular(
-                    16,
-                  ), // Bordes redondeados en todos los lados
-                  child: Image.network(
-                    hotel.image.isNotEmpty ? hotel.image[0] : '',
-                    height: 140,
+                  borderRadius: BorderRadius.circular(16),
+                  child: FadeInImage.assetNetwork(
+                    placeholder:
+                        'assets/images/placeholder.jpg', // Imagen de carga
+                    image: hotel.image.isNotEmpty ? hotel.image[0] : '',
+                    height: screenWidth < 400 ? 120 : 140,
                     width: double.infinity,
                     fit: BoxFit.cover,
-                    errorBuilder:
-                        (context, error, stackTrace) =>
-                            const Icon(Icons.broken_image, size: 140),
+                    imageErrorBuilder:
+                        (context, error, stackTrace) => Image.asset(
+                          'assets/images/placeholder.jpg',
+                          height: 140,
+                          width: double.infinity,
+                          fit: BoxFit.cover,
+                        ),
                   ),
                 ),
                 Positioned(
@@ -95,7 +105,7 @@ class HotelCard extends StatelessWidget {
                   child: Container(
                     padding: const EdgeInsets.all(6),
                     decoration: BoxDecoration(
-                      color: Colors.white.withOpacity(0.7), // Fondo translúcido
+                      color: Colors.white.withOpacity(0.7),
                       shape: BoxShape.circle,
                     ),
                     child: const Icon(
@@ -110,7 +120,11 @@ class HotelCard extends StatelessWidget {
             const SizedBox(height: 8),
             Text(
               hotel.name,
-              style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                fontSize:
+                    screenWidth < 400 ? 12 : 14, // Ajuste en pantallas pequeñas
+                fontWeight: FontWeight.bold,
+              ),
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
             ),

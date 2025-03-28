@@ -18,7 +18,7 @@ class SplashScreen extends StatelessWidget {
       backgroundColor: const Color.fromARGB(255, 41, 86, 236),
       body: Center(
         child: Text(
-          'Elite Travel',
+          'Perú Travel',
           style: TextStyle(
             fontSize: 34,
             fontWeight: FontWeight.bold,

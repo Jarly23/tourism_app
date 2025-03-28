@@ -17,6 +17,7 @@ class _TourDetailScreenState extends State<TourDetailScreen> {
 
   @override
   Widget build(BuildContext context) {
+    Color colorAzul = const Color(0xFF0D6EFD);
     return Scaffold(
       backgroundColor: Colors.white,
       body: Stack(
@@ -186,7 +187,7 @@ class _TourDetailScreenState extends State<TourDetailScreen> {
                       ElevatedButton(
                         onPressed: () {},
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.blue,
+                          backgroundColor: colorAzul,
                           padding: const EdgeInsets.symmetric(vertical: 15),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10),

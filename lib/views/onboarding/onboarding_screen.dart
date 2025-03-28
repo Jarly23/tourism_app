@@ -135,7 +135,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 }
               },
               child: Text(
-                _currentIndex == 0 ? 'Get Started' : 'Next',
+                _currentIndex == 0 ? 'Empezar' : 'Siguiente',
                 style: const TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.w600,
@@ -156,7 +156,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   );
                 },
                 child: const Text(
-                  'Skip',
+                  'Saltar',
                   style: TextStyle(color: Colors.white),
                 ),
               ),

@@ -17,6 +17,7 @@ class PackageDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Color colorAzul = const Color(0xFF0D6EFD);
     return Scaffold(
       body: Stack(
         children: [
@@ -141,7 +142,7 @@ class PackageDetailScreen extends StatelessWidget {
                         child: ElevatedButton(
                           onPressed: () {},
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.blueAccent,
+                            backgroundColor: colorAzul,
                             padding: const EdgeInsets.symmetric(vertical: 14),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10),

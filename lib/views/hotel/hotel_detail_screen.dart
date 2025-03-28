@@ -16,6 +16,7 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
 
   @override
   Widget build(BuildContext context) {
+    Color colorAzul = const Color(0xFF0D6EFD);
     return Scaffold(
       backgroundColor: Colors.white,
       body: Stack(
@@ -229,7 +230,7 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
                 child: ElevatedButton(
                   onPressed: () {},
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color.fromARGB(255, 28, 41, 224),
+                    backgroundColor: colorAzul,
                     padding: EdgeInsets.symmetric(vertical: 15),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
