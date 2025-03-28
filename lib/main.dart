@@ -5,8 +5,13 @@ import 'package:tourism_app/viewmodels/destination_viewmodel.dart';
 import 'package:tourism_app/viewmodels/hotel_viewmodel.dart';
 import 'package:tourism_app/viewmodels/package_viewmodel.dart';
 import 'package:tourism_app/viewmodels/tour_viewmodel.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:tourism_app/viewmodels/user_viewmodel.dart';
+import 'firebase_options.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(
     MultiProvider(
       providers: [
@@ -20,6 +25,9 @@ void main() {
                 Provider.of<HotelViewModel>(context, listen: false),
               ),
         ),
+        ChangeNotifierProvider(
+          create: (_) => UserViewModel(),
+        ), // Agrega el UserViewModel
       ],
       child: MyApp(),
     ),

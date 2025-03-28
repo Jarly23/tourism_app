@@ -17,6 +17,9 @@ dependencies:
   cached_network_image: ^3.2.0
   cupertino_icons: ^1.0.8
   font_awesome_flutter: ^10.7.0
+  firebase_core: ^2.24.2  # Para inicializar Firebase
+  firebase_auth: ^4.16.0  # Para autenticación
+  google_sign_in: ^6.1.5
 
 dev_dependencies:
   flutter_test:

@@ -1,32 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:tourism_app/views/home/home_screen.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
+import 'package:tourism_app/viewmodels/user_viewmodel.dart';
+import 'package:tourism_app/views/auth/register_screen.dart';
+import 'package:tourism_app/views/home/home_screen.dart';
 
-// ignore: must_be_immutable
 class LoginScreen extends StatelessWidget {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  Color colorAzul = const Color(0xFF0D6EFD);
-  Color colorGris = const Color(0xFFF7F7F9);
+  final Color colorAzul = const Color(0xFF0D6EFD);
+  final Color colorGris = const Color(0xFFF7F7F9);
 
   LoginScreen({super.key});
 
-  void _login(BuildContext context) {
-    if (emailController.text == 'test@example.com' &&
-        passwordController.text == 'Test1234') {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => HomeScreen()),
-      );
-    } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Usuario o contraseña incorrectos')),
-      );
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
+    final userViewModel = Provider.of<UserViewModel>(context);
+
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20.0),
@@ -93,17 +83,49 @@ class LoginScreen extends StatelessWidget {
                   width: double.infinity,
                   height: 50,
                   child: ElevatedButton(
-                    onPressed: () => _login(context),
+                    onPressed:
+                        userViewModel.isLoading
+                            ? null
+                            : () async {
+                              await userViewModel.loginWithEmail(
+                                emailController.text.trim(),
+                                passwordController.text.trim(),
+                              );
+                              if (userViewModel.currentUser != null) {
+                                Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => const HomeScreen(),
+                                  ),
+                                );
+                              } else {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(
+                                      userViewModel.errorMessage ?? 'Error',
+                                    ),
+                                  ),
+                                );
+                              }
+                            },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: colorAzul,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
                     ),
-                    child: const Text(
-                      'Sign In',
-                      style: TextStyle(color: Colors.white, fontSize: 16),
-                    ),
+                    child:
+                        userViewModel.isLoading
+                            ? const CircularProgressIndicator(
+                              color: Colors.white,
+                            )
+                            : const Text(
+                              'Sign In',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                              ),
+                            ),
                   ),
                 ),
                 const SizedBox(height: 20),
@@ -112,7 +134,14 @@ class LoginScreen extends StatelessWidget {
                   children: [
                     const Text("Don't have an account?"),
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => RegisterScreen(),
+                          ),
+                        );
+                      },
                       child: const Text(
                         'Sign up',
                         style: TextStyle(color: Colors.blue),
@@ -124,9 +153,28 @@ class LoginScreen extends StatelessWidget {
                 const Text("Or connect", style: TextStyle(color: Colors.grey)),
                 const SizedBox(height: 15),
                 GestureDetector(
-                  onTap: () {
-                    // Acción para login con Google
-                  },
+                  onTap:
+                      userViewModel.isLoading
+                          ? null
+                          : () async {
+                            await userViewModel.signInWithGoogle();
+                            if (userViewModel.currentUser != null) {
+                              Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const HomeScreen(),
+                                ),
+                              );
+                            } else {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text(
+                                    userViewModel.errorMessage ?? 'Error',
+                                  ),
+                                ),
+                              );
+                            }
+                          },
                   child: Container(
                     padding: const EdgeInsets.all(12),
                     decoration: BoxDecoration(

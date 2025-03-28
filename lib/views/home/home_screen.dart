@@ -4,6 +4,7 @@ import 'package:tourism_app/viewmodels/tour_viewmodel.dart';
 import 'package:tourism_app/views/destination/destination_screen.dart';
 import 'package:tourism_app/views/hotel/hotel_screen.dart';
 import 'package:tourism_app/views/package/package_screen.dart';
+import 'package:tourism_app/views/profile/profile_screen.dart';
 import 'package:tourism_app/widgets/custom_nav_bar.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -171,7 +172,7 @@ class _HomeScreenState extends State<HomeScreen> {
       const DestinationScreen(),
       const HotelScreen(),
       const PackageScreen(),
-      const Center(child: Text('Profile')),
+      const ProfileScreen(),
     ];
 
     return Scaffold(
@@ -184,7 +185,7 @@ class _HomeScreenState extends State<HomeScreen> {
             _currentIndex = index;
           });
         },
-        selectedColor: colorAzul,
+        selectedColor: Colors.white,
       ),
     );
   }

@@ -15,24 +15,29 @@ class CustomNavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.1),
-            spreadRadius: 2,
-            blurRadius: 10,
-            offset: Offset(0, -3),
-          ),
-        ],
-      ),
+      color: const Color.fromARGB(
+        255,
+        31,
+        61,
+        233,
+      ), // Asegura que el contenedor tenga el fondo azul
       child: BottomNavigationBar(
-        backgroundColor: Colors.white,
+        backgroundColor: const Color.fromARGB(
+          255,
+          31,
+          61,
+          233,
+        ), // Asegura que el fondo del BottomNavigationBar sea azul
         elevation: 0,
         currentIndex: currentIndex,
         onTap: onTap,
-        selectedItemColor: selectedColor,
-        unselectedItemColor: Colors.grey,
+        selectedItemColor: selectedColor, // Mantiene el color seleccionado
+        unselectedItemColor: Colors.white.withOpacity(
+          0.6,
+        ), // Ítems no seleccionados con opacidad
+        type:
+            BottomNavigationBarType
+                .fixed, // Evita efectos de transparencia en los ítems
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
           BottomNavigationBarItem(

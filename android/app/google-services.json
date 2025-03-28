@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "910160791026",
+    "project_id": "tourism-app-5f40d",
+    "storage_bucket": "tourism-app-5f40d.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:910160791026:android:81ec63ce26e1d91e5f576b",
+        "android_client_info": {
+          "package_name": "com.example.tourism_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "910160791026-js813d4temg3lg4skuh8j8aunvkbpp1b.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.tourism_app",
+            "certificate_hash": "4f4f169869f933c77a9f24d6e3f7315294f03845"
+          }
+        },
+        {
+          "client_id": "910160791026-2obc6mvq9475318d0o9a8hlpjv15c0rh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCmmkjEfwOAhHdqK1_M18tnGv6XHAQdJ0Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "910160791026-2obc6mvq9475318d0o9a8hlpjv15c0rh.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "910160791026-85gr2vhocppdph13r1lptprgsl08go9g.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.tourismApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
